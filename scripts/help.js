@@ -6,5 +6,5 @@
 
 listen(regexFactory.only("help"), function(match, data, replyTo) {
     irc.privmsg(replyTo,
-        "List of scripts: https://github.com/Ricket/nodebot/tree/master/scripts (more may exist)");
+        "No.");
 });
