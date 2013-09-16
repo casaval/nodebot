@@ -2,6 +2,7 @@
     "name": "nodebot",
     "private": true,
     "version": "0.2.0",
+    "main": "main.js",
     "author": "Richard Carter <richard@richardcarter.org>",
     "description": "IRC bot written in node.js",
     "repository": {
