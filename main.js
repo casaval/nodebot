@@ -1,7 +1,8 @@
 // (c) 2011 Richard Carter
 // This code is licensed under the MIT license; see LICENSE.txt for details.
 // https://github.com/Ricket/nodebot
-require('./config.js');
+'use strict';
+require('config.js');
 var util = require('util'),
     net = require('net'),
     fs = require('fs'),
@@ -113,7 +114,7 @@ var irc = global.nodebot = (function () {
                 }
             }
         }
-        
+
         pingServer();
     }
 
@@ -245,7 +246,7 @@ var irc = global.nodebot = (function () {
                 if (sanitizeMessage !== false) {
                     message = sanitize(message);
                 }
-                
+
                 var privmsg = "PRIVMSG " + user + " :";
                 var max = 510 - privmsg.length;
 
@@ -275,11 +276,13 @@ var irc = global.nodebot = (function () {
     }
 })(); // end of object 'irc'
 
-process.on('uncaughtException', function (err) {
-    console.log("caught error in script: " + err);
-});
+module.exports = irc; // Change by JE: Now exports as module
 
-irc.loadScripts();
-irc.connect(nodebot_prefs.server, nodebot_prefs.port, nodebot_prefs.nickname, nodebot_prefs.username, nodebot_prefs.realname);
+// process.on('uncaughtException', function (err) {
+//     console.log("caught error in script: " + err);
+// });
 
-repl.start({ prompt: '> ', ignoreUndefined: true });
+// irc.loadScripts();
+// irc.connect(nodebot_prefs.server, nodebot_prefs.port, nodebot_prefs.nickname, nodebot_prefs.username, nodebot_prefs.realname);
+
+// repl.start({ prompt: '> ', ignoreUndefined: true });
