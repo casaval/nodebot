@@ -6,7 +6,7 @@
     "description": "IRC bot written in node.js",
     "repository": {
         "type": "git",
-        "url": "https://github.com/Ricket/nodebot.git"
+        "url": "https://github.com/Casaval/nodebot.git"
     },
     "keywords": [
         "irc",
