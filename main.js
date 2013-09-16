@@ -2,7 +2,7 @@
 // This code is licensed under the MIT license; see LICENSE.txt for details.
 // https://github.com/Ricket/nodebot
 'use strict';
-require('config.js');
+require('config');
 var util = require('util'),
     net = require('net'),
     fs = require('fs'),
