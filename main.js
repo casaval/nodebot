@@ -29,7 +29,7 @@ var irc = global.nodebot = (function () {
 
     var pingServer = _.debounce(function () {
         irc.ping();
-    }, nodebot_prefs.ping_interval || 58000);
+    }, config.ping_interval || 58000);
 
     function send(data) {
         if (!data || data.length == 0) {
@@ -87,7 +87,7 @@ var irc = global.nodebot = (function () {
         if (data.indexOf('PRIVMSG') > -1) {
             dest = (/^:([^!]+)!.*PRIVMSG ([^ ]+) /i).exec(data);
             if (dest) {
-                if (dest[2].toUpperCase() == nodebot_prefs.nickname.toUpperCase()) {
+                if (dest[2].toUpperCase() == config.nickname.toUpperCase()) {
                     replyTo = from = dest[1];
                 } else {
                     replyTo = dest[2];
@@ -179,7 +179,7 @@ var irc = global.nodebot = (function () {
                             var scriptName = scripts[i];
                             var sandbox = {
                                 irc: irc,
-                                nodebot_prefs: nodebot_prefs,
+                                config: config,
                                 console: console,
                                 setTimeout: setTimeout,
                                 setInterval: setInterval,
@@ -225,10 +225,10 @@ var irc = global.nodebot = (function () {
 
         /* IRC COMMANDS: */
         ping: function (server) {
-            send("PING " + (server || nodebot_prefs.server));
+            send("PING " + (server || config.server));
         },
         pong: function (server) {
-            send("PONG " + (server || nodebot_prefs.server));
+            send("PONG " + (server || config.server));
         },
         join: function (channel, key) {
             var cmd = "JOIN :" + sanitize(channel);
@@ -283,6 +283,6 @@ module.exports = irc; // Change by JE: Now exports as module
 // });
 
 // irc.loadScripts();
-// irc.connect(nodebot_prefs.server, nodebot_prefs.port, nodebot_prefs.nickname, nodebot_prefs.username, nodebot_prefs.realname);
+// irc.connect(config.server, config.port, config.nickname, config.username, config.realname);
 
 // repl.start({ prompt: '> ', ignoreUndefined: true });
