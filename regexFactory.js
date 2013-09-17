@@ -3,7 +3,7 @@
  * of the listen function in a standardized way.
  */
 
-require("config");
+var config = require("config");
 var _ = require("lodash");
 
 // http://stackoverflow.com/a/6969486
@@ -24,9 +24,9 @@ function makePrefix(prefixed) {
         return "";
     } else {
         return "(?:"
-            + escapeRegExp(nodebot_prefs.command_prefix) + " ?"
+            + escapeRegExp(config.command_prefix) + " ?"
             + "|"
-            + escapeRegExp(nodebot_prefs.nickname) + " *[:,]? +"
+            + escapeRegExp(config.nickname) + " *[:,]? +"
             + ")"
             + (prefixed === "optional" ? "?" : "");
     }
