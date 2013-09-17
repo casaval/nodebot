@@ -192,7 +192,7 @@ var irc = global.nodebot = (function () {
                                 regexFactory: require('./regexFactory'),
                                 listen: function (dataRegex, callback, once, prefixed) {
                                     if (!_.isRegExp(dataRegex)) {
-                                        console.err("Error in script " + scripts[i] + ": first parameter to listen is not a RegExp object. Use regexFactory.");
+                                        console.log("Error in script " + scripts[i] + ": first parameter to listen is not a RegExp object. Use regexFactory.");
                                         return;
                                     }
                                     once = !!once;
