@@ -3,7 +3,7 @@
  * of the listen function in a standardized way.
  */
 
-require("./config.js");
+require("config");
 var _ = require("lodash");
 
 // http://stackoverflow.com/a/6969486
